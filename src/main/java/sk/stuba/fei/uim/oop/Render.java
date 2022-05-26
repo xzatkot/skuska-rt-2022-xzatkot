@@ -1,14 +1,17 @@
 package sk.stuba.fei.uim.oop;
 
+import lombok.Getter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
 public class Render extends JPanel {
-    private int x;
-    private int y;
-    private Color color;
-    private Logic logic;
+    private final int x;
+    private final int y;
+    private final Color color;
+    private final Logic logic;
+    @Getter
     private int degrees;
     private int stepSize;
     private Turtle turtle;
@@ -23,13 +26,13 @@ public class Render extends JPanel {
     }
 
     public void drawLine() {
-        this.degrees = Integer.parseInt((String) Objects.requireNonNull(this.logic.getDegreeSet().getSelectedItem()));
+        this.degrees += Integer.parseInt((String) Objects.requireNonNull(this.logic.getDegreeSet().getSelectedItem()));
         this.stepSize = this.logic.getStepTurtle().getValue();
         this.repaint();
         this.turtle = new Turtle(this.x, this.y, this.degrees);
         this.turtle.draw(this.getGraphics());
-        int xPos = this.x + (int)(Math.sin(Math.toRadians(this.degrees)) * this.stepSize);
-        int yPos = this.y - (int)(Math.cos(Math.toRadians(this.degrees)) * this.stepSize);
+//        int xPos = this.x + (int)(Math.sin(Math.toRadians(this.degrees)) * this.stepSize);
+//        int yPos = this.y - (int)(Math.cos(Math.toRadians(this.degrees)) * this.stepSize);
     }
 
     @Override

@@ -4,13 +4,13 @@ import java.awt.*;
 import java.lang.Math;
 
 public class Turtle {
-    private int x;
-    private int y;
-    private int degrees;
+    private final int x;
+    private final int y;
+    private final int degrees;
     public Turtle(int x, int y, int degrees) {
         this.x = x;
         this.y = y;
-        this.degrees += degrees;
+        this.degrees = degrees;
     }
 
     public void draw(Graphics g) {

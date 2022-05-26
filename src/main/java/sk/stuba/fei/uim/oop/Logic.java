@@ -5,18 +5,19 @@ import lombok.Getter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 public class Logic extends Adapter {
     @Getter
-    private JLabel moveInfo;
+    private final JLabel moveInfo;
     @Getter
-    private JLabel colorInfo;
+    private final JLabel colorInfo;
     @Getter
-    private JSlider stepTurtle;
+    private final JSlider stepTurtle;
     @Getter
-    private JComboBox degreeSet;
+    private final JComboBox degreeSet;
     @Getter
-    private Render render;
+    private final Render render;
     @Getter
     private Color color;
     private int colorIndex;
@@ -33,7 +34,7 @@ public class Logic extends Adapter {
         this.colorInfo.setOpaque(true);
         this.color = Color.RED;
         this.colorIndex = 0;
-        this.moveInfo.setText("Step:");
+        this.moveInfo.setText("Step: " + this.stepTurtle.getValue() + "  Angle: 45");
         this.colorInfo.setBackground(this.color);
         this.render = new Render(500, 350, this);
     }
@@ -49,8 +50,14 @@ public class Logic extends Adapter {
             this.colorInfo.setBackground(this.color);
         }
         if (e.getActionCommand().equals(TurtlePaint.ACTION)) {
+            this.updateLabel();
             this.render.drawLine();
         }
+    }
+
+    private void updateLabel() {
+        int degrees = Integer.parseInt((String) Objects.requireNonNull(this.getDegreeSet().getSelectedItem()));
+        this.moveInfo.setText("Step: " + this.stepTurtle.getValue() + "  Angle: " + degrees);
     }
 
     private void changeColor() {
