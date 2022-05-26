@@ -11,24 +11,31 @@ public class Render extends JPanel {
     private Logic logic;
     private int degrees;
     private int stepSize;
+    private Turtle turtle;
 
     public Render(int x, int y, Logic logic) {
         this.x = x;
         this.y = y;
         this.logic = logic;
         this.color = logic.getColor();
+        this.degrees = 0;
+        this.stepSize = 0;
     }
 
     public void drawLine() {
         this.degrees = Integer.parseInt((String) Objects.requireNonNull(this.logic.getDegreeSet().getSelectedItem()));
         this.stepSize = this.logic.getStepTurtle().getValue();
+        this.repaint();
+        this.turtle = new Turtle(this.x, this.y, this.degrees);
+        this.turtle.draw(this.getGraphics());
+        int xPos = this.x + (int)(Math.sin(Math.toRadians(this.degrees)) * this.stepSize);
+        int yPos = this.y - (int)(Math.cos(Math.toRadians(this.degrees)) * this.stepSize);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Turtle turtle = new Turtle(500, 350, 135);
-        turtle.draw(g);
-        this.repaint();
+        this.turtle = new Turtle(this.x, this.y, this.degrees);
+        this.turtle.draw(g);
     }
 }

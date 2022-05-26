@@ -26,6 +26,7 @@ public class Logic extends Adapter {
         this.degreeSet = new JComboBox(degrees);
         this.degreeSet.setSelectedIndex(3);
         this.stepTurtle = new JSlider(0, 100, 10);
+        this.stepTurtle.setMajorTickSpacing(10);
         this.stepTurtle.setSnapToTicks(true);
         this.moveInfo = new JLabel("Step:  Degrees: ");
         this.colorInfo = new JLabel();
