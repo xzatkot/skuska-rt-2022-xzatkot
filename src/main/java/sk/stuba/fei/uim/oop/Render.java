@@ -27,10 +27,8 @@ public class Render extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Turtle turtle = new Turtle(500, 350, 0);
+        Turtle turtle = new Turtle(500, 350, 135);
         turtle.draw(g);
         this.repaint();
-//        g.setColor(Color.GREEN);
-//        g.fillOval(this.x-20, this.y-20, 20, 20);
     }
 }

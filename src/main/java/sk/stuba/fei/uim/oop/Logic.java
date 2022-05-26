@@ -5,7 +5,6 @@ import lombok.Getter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Objects;
 
 public class Logic extends Adapter {
     @Getter
